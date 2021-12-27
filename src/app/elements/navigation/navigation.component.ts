@@ -39,13 +39,13 @@ export class NavigationComponent implements OnInit {
     ];
 
     customerArray = [
-      '/admin/customers',
+      '/admin/ecom-customers',
       '/admin/add-customer',
     ];
 
     OrdersArray = [
-      '/admin/sales',
-      '/admin/sales-stats',
+      '/admin/orders',
+      '/admin/ecom-product-order',
 
     ];
     productsArray = [
@@ -53,7 +53,7 @@ export class NavigationComponent implements OnInit {
       '/admin/products/add-product',
       '/admin/products/categories',
       '/admin/products/product-list',
-      '/admin/products/featured-product',
+      '/admin/ecom-product-list',
       '/admin/products/daily-deals',
       '/admin/products/banner-product',
 

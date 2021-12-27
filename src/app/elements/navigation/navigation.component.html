@@ -40,7 +40,7 @@
                 <li><a  class="{{(currentHref == '/admin/products || currentHref == '/admin/products/product-list ' ) ? 'mm-active' : ''}}" [routerLink]="['/admin/products']">List of products </a></li>
                 <li><a [routerLink]="['/admin/products/add-product']" class="{{(currentHref == '/admin/products/add-product') ? 'mm-active' : ''}}">Add product </a></li>
                 <li><a [routerLink]="['/admin/products/categories']" class="{{(currentHref == '/admin/products/categories') ? 'mm-active' : ''}}">List of categories </a></li>
-                <li><a [routerLink]="['/admin/products/featured-product']" class="{{(currentHref == '/admin/products/featured-product') ? 'mm-active' : ''}}">Featured products </a></li>
+                <li><a [routerLink]="['/admin/ecom-product-list']" class="{{(currentHref == '/admin/ecom-product-list') ? 'mm-active' : ''}}">Featured products </a></li>
                 <li><a [routerLink]="['/admin/products/daily-deals']" class="{{(currentHref == '/admin/products/daily-deals') ? 'mm-active' : ''}}">Daily deals </a></li>
                 <li><a [routerLink]="['/admin/products/banner-product']" class="{{(currentHref == '/admin/products/banner-product') ? 'mm-active' : ''}}">Banners products </a></li>
             
@@ -63,7 +63,7 @@
                 <span class="nav-text">Customers</span>
                 </a>
             <ul aria-expanded="false"  [ngClass]="{'mm-show': customerArray.indexOf(currentHref) > -1}">
-                <li><a  class="{{(currentHref == '/admin/customers' ) ? 'mm-active' : ''}}" [routerLink]="['/admin/customers']">List of customers </a></li>
+                <li><a  class="{{(currentHref == '/admin/ecom-customers' ) ? 'mm-active' : ''}}" [routerLink]="['/admin/ecom-customers']">List of customers </a></li>
                 <li><a [routerLink]="['/admin/add-customer']" class="{{(currentHref == '/admin/add-customer') ? 'mm-active' : ''}}">Add customer </a></li>
             
             </ul>
@@ -102,19 +102,19 @@
             </ul>
             
             </li>
-            <li [ngClass]="{'mm-active': supplierArray.indexOf(currentHref) > -1}"><a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
+            <li [ngClass]="{'mm-active': OrdersArray.indexOf(currentHref) > -1}"><a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
                 <i class="flaticon-381-notepad"></i>
                 <span class="nav-text">Orders</span>
                 </a>
-            <ul aria-expanded="false"  [ngClass]="{'mm-show': dashboardArray.indexOf(currentHref) > -1}">
-                <li><a  class="{{(currentHref == '/admin/suppliers' ) ? 'mm-active' : ''}}" [routerLink]="['/admin/suppliers']">List of suppliers </a></li>
-                <li><a [routerLink]="['/admin/add-supplier']" class="{{(currentHref == '/admin/add-supplier') ? 'mm-active' : ''}}">Add supplier </a></li>
+            <ul aria-expanded="false"  [ngClass]="{'mm-show': OrdersArray.indexOf(currentHref) > -1}">
+                <li><a  class="{{(currentHref == '/admin/orders' ) ? 'mm-active' : ''}}" [routerLink]="['/admin/orders']">List of oders </a></li>
+                <li><a [routerLink]="['/admin/ecom-product-order']" class="{{(currentHref == '/admin/ecom-product-order') ? 'mm-active' : ''}}">Tracking </a></li>
             
             </ul>
             
             </li>
             
-            <li [ngClass]="{'mm-active': apsArray.indexOf(currentHref) > -1}">
+            <!-- <li [ngClass]="{'mm-active': apsArray.indexOf(currentHref) > -1}">
                 <a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
                     <i class="flaticon-381-television"></i>
                     <span class="nav-text">Apps</span>
@@ -142,7 +142,7 @@
                         </ul>
                     </li>
                 </ul>
-            </li>
+            </li> -->
             
             <!-- <li [ngClass]="{'mm-active': chartsArray.indexOf(currentHref) > -1}">
                 <a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">

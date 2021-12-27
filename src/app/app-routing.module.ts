@@ -182,6 +182,7 @@ const routes: Routes = [
                         {path: 'ecom-product-detail', component: ProductDetailComponent},
                         {path: 'ecom-product-order', component: OrderComponent},
                         {path: 'ecom-checkout', component: CheckoutComponent},
+                        {path: 'ecom-order-detail', component: CheckoutComponent},
                         {path: 'ecom-invoice', component: InvoiceComponent},
                         {path: 'ecom-customers', component: EcomCustomersComponent},
                         

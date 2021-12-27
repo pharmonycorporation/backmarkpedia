@@ -30,12 +30,12 @@
                         <td>{{order.total}}</td>
                         <td>
                             <div class="p-1 actions">          
-                                <button mat-mini-fab color="primary" matTooltip="View">
+                                <a mat-mini-fab color="primary" routerLink="/admin/ecom-invoice" matTooltip="View">
                                     <mat-icon>remove_red_eye</mat-icon>
-                                </button>
-                                <button *ngIf="order.invoice" mat-mini-fab color="warn" matTooltip="View invoice" class="btn-invoice">
+                                </a>
+                                <a *ngIf="order.invoice" mat-mini-fab color="warn" routerLink="/admin/ecom-order-detail" matTooltip="View invoice" class="btn-invoice">
                                     <mat-icon>receipt</mat-icon>
-                                </button>
+                                </a>
                             </div>
                         </td>
                     </tr>
