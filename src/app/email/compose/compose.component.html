@@ -1,0 +1,162 @@
+<!--**********************************
+	Content body start
+***********************************-->
+<div class="content-body">
+	<div class="container-fluid">
+		<div class="row page-titles mx-0">
+            <div class="col-sm-6 p-md-0">
+                <div class="welcome-text">
+                    <h4>Messagerie</h4>
+                    <p class="mb-0">gestion des messages</p>
+                </div>
+            </div>
+            <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="javascript:void(0)">Tableau de bord</a></li>
+                    <li class="breadcrumb-item active"><a href="javascript:void(0)">Ecrire</a></li>
+                </ol>
+            </div>
+        </div>
+		<!-- row -->
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="card">
+					<div class="card-body">
+						<div class="email-left-box px-0 mb-3">
+							<div class="p-0">
+								<a [routerLink]="['/espace-manager/email/send']" class="btn btn-primary btn-block">Ecrire</a>
+							</div>
+							<div class="mail-list mt-4">
+								<a [routerLink]="['/espace-manager/email']" class="list-group-item active"><i
+									class="fa fa-Boite de reception font-18 align-middle mr-2"></i> Boite de reception <span
+								class="badge badge-primary badge-sm text-white float-right">{{messages?.length}}</span> </a>
+								<a [routerLink]="['/espace-manager/email/envoi']" class="list-group-item"><i
+									class="fa fa-paper-plane font-18 align-middle mr-2"></i>Envoyés</a> 
+								<a [routerLink]="['/espace-manager/email']" class="list-group-item"><i
+									class="mdi mdi-file-document-box font-18 align-middle mr-2"></i>messages reçus</a>
+							</div>
+							<div  class="mail-list mt-4" >
+								<form [formGroup]="searchForm">
+									<input placeholder="filtrer par prénom..." formControlName="first_name" class="form-control" (keyup)="filterResults()">
+								</form>
+								<hr>
+								<ul class="contacts" *ngFor="let prestataire of filteredItems | slice:0:5">
+									
+									<li class="active dz-chat-user mt-1" style="margin-top:0.2rem">
+										<div class="d-flex bd-highlight">
+											<div class="img_cont">
+												<img src="{{prestataire.user.avatar}}" class="rounded-circle user_img" height="40" width="40"  alt=""/>
+												<span class="En ligne_icon"></span>
+											</div>
+											<div class="user_info">
+												<span>&nbsp;&nbsp;    {{ prestataire.user.first_name }} {{ prestataire.user.last_name }} </span>
+												<br><span class="text-primary text-center" style="font-size: 12px; ">&nbsp;&nbsp;
+													 {{prestataire?.user.email}}</span> <br>
+													<a class="btn" (click)="write(prestataire)"> <i class="fa fa-paper-plane font-8 align-middle"></i> Ecrire </a>
+											
+											</div>
+										</div>
+									</li>
+									<hr>
+								   
+								</ul>
+							</div>
+							<!-- <div class="intro-title d-flex justify-content-between">
+								<h5>Categories</h5>
+								<i class="fa fa-chevron-down" aria-hidden="true"></i>
+							</div> -->
+							<!-- <div class="mail-list mt-4">
+								<a [routerLink]="['/espace-manager/email']" class="list-group-item"><span class="icon-warning"><i
+								class="fa fa-circle" aria-hidden="true"></i></span>
+								Work </a>
+								<a [routerLink]="['/espace-manager/email']" class="list-group-item"><span class="icon-primary"><i
+								class="fa fa-circle" aria-hidden="true"></i></span>
+								Private </a>
+								<a [routerLink]="['/espace-manager/email']" class="list-group-item"><span class="icon-success"><i
+								class="fa fa-circle" aria-hidden="true"></i></span>
+								Support </a>
+								<a [routerLink]="['/espace-manager/email']" class="list-group-item"><span class="icon-dpink"><i
+								class="fa fa-circle" aria-hidden="true"></i></span>
+								Social </a>
+							</div> -->
+						</div>
+						<div class="email-right-box ml-0 ml-sm-4 ml-sm-0">
+							<!-- <div class="toolbar mb-4" role="toolbar">
+								<div class="btn-group mb-1 mr-1">
+									<button type="button" class="btn btn-primary light px-3"><i class="fa fa-archive"></i></button>
+									<button type="button" class="btn btn-primary light px-3"><i class="fa fa-exclamation-circle"></i></button>
+									<button type="button" class="btn btn-primary light px-3"><i class="fa fa-Brouillon"></i></button>
+								</div>
+								<div class="btn-group mb-1 mr-1" ngbDropdown>
+									<button type="button" class="btn btn-primary light dropdown-toggle px-3" ngbDropdownToggle>
+										<i class="fa fa-folder"></i> <b class="caret m-l-5"></b>
+									</button>
+									<div class="dropdown-menu" ngbDropdownMenu> 
+										<a class="dropdown-item" href="javascript: void(0);">Social</a> 
+										<a class="dropdown-item" href="javascript: void(0);">Promotions</a> 
+										<a class="dropdown-item" href="javascript: void(0);">Updates</a>
+										<a class="dropdown-item" href="javascript: void(0);">Forums</a>
+									</div>
+								</div>
+								<div class="btn-group  mb-1 mr-1" ngbDropdown>
+									<button type="button" class="btn btn-primary light dropdown-toggle px-3" ngbDropdownToggle>
+										<i class="fa fa-tag"></i> <b class="caret m-l-5"></b>
+									</button>
+									<div class="dropdown-menu" ngbDropdownMenu> 
+										<a class="dropdown-item" href="javascript: void(0);">Updates</a> 
+										<a class="dropdown-item" href="javascript: void(0);">Social</a> 
+										<a class="dropdown-item" href="javascript: void(0);">Promotions</a>
+										<a class="dropdown-item" href="javascript: void(0);">Forums</a>
+									</div>
+								</div>
+								<div class="btn-group mb-1 mr-1" ngbDropdown>
+									<button type="button" class="btn btn-primary light dropdown-toggle v" ngbDropdownToggle>More <span class="caret m-l-5"></span>
+									</button>
+									<div class="dropdown-menu" ngbDropdownMenu> <a class="dropdown-item" href="javascript: void(0);">Mark as Unread</a> <a class="dropdown-item" href="javascript: void(0);">Add to Tasks</a>
+										<a class="dropdown-item" href="javascript: void(0);">Add Star</a> <a class="dropdown-item" href="javascript: void(0);">Mute</a>
+									</div>
+								</div>
+							</div> -->
+							<div class="compose-content">
+								<form [formGroup]="sendEmailForm" (ngSubmit)="send()">
+									<div class="form-group">
+										<input type="email" formControlName="email" class="form-control bg-transparent" placeholder=" envoyé à">
+										
+									
+										<!-- <select class="form-control" 
+										(change)="mnVuln?.prestataireActif?.prestataire.id = $event.target.value; 
+												updateprestataireProcessus();
+												filterprestataires($event)">
+										<option></option>
+										<option *ngFor="let prestataire of prestataires" 
+											[value]="prestataire.id" 
+											[selected]="prestataire.id === mnVuln?.prestataireActif?.prestataire.id">
+											{{prestataire?.first_name}}</option>
+									</select> -->
+									
+											</div>
+									<div class="form-group">
+										<input type="text" formControlName="objet" class="form-control bg-transparent" placeholder=" Objet:">
+									</div>
+									<div class="form-group">
+										<textarea id="email-compose-editor" formControlName="message" class="textarea_editor form-control bg-transparent" rows="15" placeholder="Entrez le message ..."></textarea>
+									</div>
+									<div class="text-left mt-4 mb-2">
+										<button class="btn btn-primary btn-sl-sm mr-2" type="submit"><span class="mr-2"><i class="fa fa-paper-plane"></i></span>Envoyer</button>
+										<button class="btn btn-danger light btn-sl-sm" type="cancel" (click)="reset()"><span class="mr-2"><i class="fa fa-times" aria-hidden="true"></i></span>Annuler</button>
+									</div>
+								</form>
+							
+							</div>
+							
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+	</div>
+</div>
+<!--**********************************
+	Content body end
+***********************************-->

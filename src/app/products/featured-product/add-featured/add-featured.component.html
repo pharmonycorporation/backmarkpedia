@@ -1,0 +1,27 @@
+<h1 mat-dialog-title>Add Feautured product</h1>
+<form [formGroup]="form" (ngSubmit)="onSubmit()" autocomplete="off">
+    <div mat-dialog-content>
+        <div fxLayout="row wrap">
+            
+            
+            <div fxFlex="100">
+                <mat-form-field appearance="outline" class="w-100">
+                    <mat-label>Product </mat-label>
+                    <mat-select formControlName="product_id">
+                        <mat-option *ngFor="let prod of data.products" [value]="prod.id">
+                            <span>{{prod.my_product_flat.name}}</span>
+                        </mat-option>
+                    </mat-select> 
+                </mat-form-field>
+            </div> 
+           
+            
+        </div>
+    </div>
+    <div mat-dialog-actions>
+        <div fxLayout="row" fxLayoutAlign="space-between center" class="w-100"> 
+            <button mat-raised-button color="warn" type="button" mat-dialog-close>Close</button>
+            <button mat-raised-button color="primary" type="submit">Save</button>
+        </div> 
+    </div>
+</form>

@@ -1,0 +1,216 @@
+
+<!--**********************************
+    Content body start
+***********************************-->
+<div class="content-body">
+    <!-- row -->
+    <div class="container-fluid">
+        <div class="d-flex align-items-center flex-wrap mb-3">
+            <!-- <div class="input-group search-area-2 mb-3 mr-auto d-inline-flex">
+                <div class="input-group-append">
+                    <a href="javascript:void(0);" class="input-group-text"><i class="flaticon-381-search-2"></i></a>
+                </div>
+             
+                
+            </div> -->
+            <span>Add Supplier </span>
+            <!-- <mat-form-field appearance="fill" class="style-1 dashboard-select  mb-3">
+              <mat-select value="Newest">
+                <mat-option value="Newest">Nouvelles</mat-option>
+                <mat-option value="Oldest">Anciennes</mat-option>
+                <mat-option value="Latest">Dernières</mat-option>
+              </mat-select>
+            </mat-form-field> -->
+        </div>
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="table-responsive table-hover fs-14">
+                    <div class=" col-lg-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4 class="card-title">New Customer / Supplier</h4>
+                            </div>
+                            <div class="card-body">
+                                
+                                <div class="basic-form">
+                                    <form  [formGroup]="registerFormThree" method="post" name="signUpFormThree" (ngSubmit)="onSubmit()">
+                                    
+                                        <div style="margin-bottom: 10px;">
+                                            <span style="margin-right: 10px;">
+                                                Please select trade role:
+                                            </span>
+                                            <span (click)="buyer()" style="margin-right: 20px;">
+                                                <input type="radio" name="role" id="role_buyer"  ><label for="role_buyer" style="font-weight: normal; font-style: italic; font-size: small;">Customer</label>
+                                            </span>
+                                            <span (click)="seller()">
+                                                <input type="radio" name="role"  id="role_seller" checked ><label for="role_seller" style="font-weight: normal; font-style: italic; font-size: small;">Seller</label>
+                                            </span>
+                                        </div>
+                                        <div class="row">
+                                            
+                                            <div class="form-group col-md-6">
+                                                <label>Email</label>
+                                                <input class="form-control" formControlName="email" type="email" name="email" placeholder="E-mail Address" required>
+                                                <p *ngIf="registerFormSubmitted && (registerFormControl.email.invalid || registerFormControl.email.errors?.required)"  class="alert-message"
+                                                style="color: #D23950; font-style: italic; font-size: small;">
+                                                    ❗ Please enter your email
+                                                </p>
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                                <div *ngIf="!is_buyer">
+                                                    <label>Shop title</label>
+                                                    <input class="form-control" formControlName="shop_title" type="text" name="shop_title" placeholder="Shop Title">
+                                                    <p *ngIf="registerFormSubmitted && (registerFormControl.shop_title.invalid || registerFormControl.shop_title.errors?.required)"  class="alert-message"
+                                                    style="color: #D23950; font-style: italic; font-size: small;">
+                                                        ❗ Please enter the shop title
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        
+
+                                        <div class="row">
+                                            <div class="form-group col-md-6">
+                                                <label>First name</label>
+                                                <input class="form-control" formControlName="first_name" type="text" name="first_name" placeholder="First Name">
+                                                <p *ngIf="registerFormSubmitted && (registerFormControl.first_name.invalid || registerFormControl.first_name.errors?.required)"  class="alert-message"
+                                                style="color: #D23950; font-style: italic; font-size: small;">
+                                                    ❗ Please enter the first name
+                                                </p>
+                                            </div>
+                                            
+                                            <div class="form-group col-md-6">
+                                                <label>Last name</label>
+                                                <input class="form-control" formControlName="last_name" type="text" name="last_name" placeholder="Last Name" required>
+                                                <p *ngIf="registerFormSubmitted && (registerFormControl.last_name.invalid || registerFormControl.last_name.errors?.required)"  class="alert-message" 
+                                                style="color: #D23950; font-style: italic; font-size: small;">
+                                                ❗ Please enter the last name
+                                                </p>
+                                            </div>
+                                         </div>
+                                        
+                                        
+                                        <div class="row">
+                                            <div class="form-group col-md-6">
+                                                <div *ngIf="!is_buyer">
+                                                    <label>Phone number</label>
+                                                    <input class="form-control" formControlName="phone" type="text" name="phone" placeholder="Phone Number">
+                                                    <p *ngIf="registerFormSubmitted && (registerFormControl.phone.invalid || registerFormControl.phone.errors?.required)"  class="alert-message"
+                                                    style="color: #D23950; font-style: italic; font-size: small;">
+                                                        ❗ Please enter the phone number
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                                <div *ngIf="!is_buyer">
+                                                    <label>Country</label>
+                                                    <input class="form-control" formControlName="country" type="text" name="country" placeholder="Country">
+                                                    <p *ngIf="registerFormSubmitted && (registerFormControl.country.invalid || registerFormControl.country.errors?.required)"  class="alert-message"
+                                                    style="color: #D23950; font-style: italic; font-size: small;">
+                                                        ❗ Please enter the country
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                       <div class="row">
+                                           <div class="form-group col-md-6">
+                                            <div *ngIf="!is_buyer">
+                                                <label>City</label>
+                                                <input class="form-control" formControlName="city" type="text" name="city" placeholder="City">
+                                                <p *ngIf="registerFormSubmitted && (registerFormControl.city.invalid || registerFormControl.city.errors?.required)"  class="alert-message"
+                                                style="color: #D23950; font-style: italic; font-size: small;">
+                                                    ❗ Please enter the city
+                                                </p>
+                                            </div>
+                                           </div>
+                                           <div class="form-group col-md-6">
+                                               
+                                                <div *ngIf="!is_buyer">
+                                                    <label>Address</label>
+                                                    <input class="form-control" formControlName="address1" type="text" name="address1" placeholder="Address">
+                                                    <p *ngIf="registerFormSubmitted && (registerFormControl.address1.invalid || registerFormControl.address1.errors?.required)"  class="alert-message"
+                                                    style="color: #D23950; font-style: italic; font-size: small;">
+                                                        ❗ Please enter the address
+                                                    </p>
+                                                </div>
+                                           </div>
+                                       </div>
+                                        
+                                        
+                                        <!-- <div *ngIf="!is_buyer">
+                                            <input class="form-control" formControlName="url" type="text" name="url" placeholder="Address">
+                                            <p *ngIf="registerFormSubmitted && (registerFormControl.url.invalid || registerFormControl.url.errors?.required)"  class="alert-message"
+                                            style="color: #D23950; font-style: italic; font-size: small;">
+                                                ❗ Please enter the address
+                                            </p>
+                                        </div> -->
+                
+                                       
+                                        <div class="row">
+                                            <div class="form-group col-md-6">
+                                                <label>Password</label>
+                                                <input class="form-control" formControlName="password" type="password" name="password" placeholder="Password" required>
+                                                <p *ngIf="registerFormSubmitted && (registerFormControl.password.invalid || registerFormControl.password.errors?.required)" class="alert-message"
+                                                style="color: #D23950; font-style: italic; font-size: small;">
+                                                    ❗ Please set the login password
+                                                </p>
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                                <label>Confirm password</label>
+                                                <input class="form-control" formControlName="confirmation_password" type="password" name="confirmation_password" placeholder="Confirm Password" required>
+                                                <p *ngIf="registerFormSubmitted && (registerFormControl.confirmation_password.invalid || registerFormControl.confirmation_password.errors?.required)"  class="alert-message"
+                                                style="color: #D23950; font-style: italic; font-size: small;">
+                                                    ❗ Please enter the login password again
+                                                </p>
+                                            </div>
+                                        </div>
+                                        
+                                        
+                                        
+                                        
+                                        <input type="checkbox" formControlName="accept_condition" id="chk1"><label for="chk1" style="font-weight: normal; font-style: italic; font-size: small;">While creating a website account: I agree to abide by the <span style="color:  #D23950;">markpedia.com Membership Agreement</span> - Willing to receive emails from markpedia.com members and services</label>
+                                        <p *ngIf="registerFormSubmitted && (registerFormControl.accept_condition.invalid || registerFormControl.accept_condition.errors?.required)"  class="alert-message"
+                                        style="color: #D23950; font-style: italic; font-size: small;">
+                                            ❗ Please check the agreement
+                                        </p>
+                                        
+                                        <div class="form-button">
+                                            <button id="submit" type="submit" class="btn btn-primary"> <span><i class="fa fa-spinner fa-spin" *ngIf="loading"></i></span> Save</button> 
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <!-- <div class="d-flex justify-content-between p-2">
+                        <ngb-pagination class="mr-3" [collectionSize]="collectionSize" [(page)]="page" [pageSize]="pageSize" (pageChange)="updateTransactionListing()">
+                        </ngb-pagination>
+                        
+                        <select class="custom-select" style="width: auto" [(ngModel)]="pageSize" (ngModelChange)="updateTransactionListing()">
+                            <option [ngValue]="5">5 prestataires par page</option>
+                            <option [ngValue]="10">10 prestataires par page</option>
+                            <option [ngValue]="20">20 prestataires par page</option>
+                        </select>
+                    </div> -->
+                </div>	
+            </div>
+        </div>
+    </div>
+</div>
+<!--**********************************
+Content body end
+***********************************-->

@@ -1,0 +1,111 @@
+
+<!--**********************************
+    Content body start
+***********************************-->
+<div class="content-body">
+    <!-- row -->
+    <div class="container-fluid">
+        <div class="d-flex align-items-center flex-wrap mb-3">
+            <div class="input-group search-area-2 mb-3 mr-auto d-inline-flex">
+                <div class="input-group-append">
+                    <a href="javascript:void(0);" class="input-group-text"><i class="flaticon-381-search-2"></i></a>
+                </div>
+                <!-- <input type="text" class="form-control" placeholder="Que recherchez-vous ?"> -->
+                <form [formGroup]="searchForm">
+                    <input type="text" placeholder="Que recherchez-vous ?" formControlName="message" class="form-control" (keyup)="filterResults()">
+                </form>
+            </div>
+            <span>Liste </span>
+            <!-- <mat-form-field appearance="fill" class="style-1 dashboard-select  mb-3">
+              <mat-select value="Newest">
+                <mat-option value="Newest">Nouvelles</mat-option>
+                <mat-option value="Oldest">Anciennes</mat-option>
+                <mat-option value="Latest">Dernières</mat-option>
+              </mat-select>
+            </mat-form-field> -->
+        </div>
+<div class="p-1">
+    <mat-card class="p-0"> 
+        <div fxLayout="row wrap" fxLayoutAlign="space-between center" class="w-100 p-2">
+            <h2>Liste des témoignages public </h2> 
+            <button mat-raised-button color="primary" (click)="openTemoignageDialog(null)">Ajouter un témoignage</button>
+        </div>
+        <mat-divider></mat-divider>
+        <div class="mat-table admin-table" *ngIf="filteredItems">
+            <table class="table display mb-4 dataTablesCard dataTable short-one  card-table text-black ">
+                <thead>
+                    <tr>
+                        <th>Nom</th>
+                        <th>Message</th>
+                        <th>Email</th>
+                        <th>Date création</th>
+                        <th>Etat</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let temoignage of filteredItems | paginate: { itemsPerPage: count, currentPage: page }" class="mat-row">
+                        <td width="20%">{{temoignage.name}}</td>
+                        <td width="30%">{{ temoignage.message}}</td>
+                        <td width="10%">{{ temoignage.email}}</td>
+                        <td width="10%">{{ temoignage.dateCreated | date :'dd-MM-YYYY' }}</td>
+                        <td width="10%">{{ (temoignage.active)? 'Actif':'Non Actif'}}</td>
+                        <td width="10%"><button mat-mini-fab color="primary" matTooltip="Edit" (click)="openTemoignageDialog(temoignage) ">
+                            <i class="fa fa-edit "></i>
+                        </button></td>
+                    </tr>
+                </tbody>
+            </table>
+            <!-- <div class="mat-header-row">
+                <div class="mat-header-cell">Question</div>
+                <div class="mat-header-cell">Reponse</div> 
+                <div class="mat-header-cell">Date création</div> 
+                <div class="mat-header-cell"></div>
+            </div> -->
+            <!-- <div *ngFor="let temoignage of temoignages_ | paginate: { itemsPerPage: count, currentPage: page }" class="mat-row">
+                <div class="mat-cell">{{temoignage.question}}</div>
+                <div class="mat-cell">
+                    <mat-icon class="text-muted">{{ temoignage.message}}</mat-icon> 
+                </div>  
+                <div class="mat-cell">
+                    {{ temoignage.dateCreated | date :'dd-MM-YYYY' }}
+                </div>   
+                <div class="mat-cell">
+                    <div class="p-1 actions">          
+                        <button mat-mini-fab color="primary" matTooltip="Edit" (click)="openFaqDialog(temoignage) ">
+                            <mat-icon>modifier</mat-icon>
+                        </button>
+                        <button mat-mini-fab color="warn" matTooltip="Delete" class="mx-1" (click)="remove(temoignage)">
+                            <mat-icon>delete</mat-icon>
+                        </button> 
+                    </div>
+                </div>      
+            </div> -->
+        </div>
+    </mat-card>
+
+    <div *ngIf="temoignages_.length > 0" fxLayout="row wrap">
+        <div fxFlex="100"> 
+            <mat-card class="p-0 text-center">           
+                <pagination-controls class="product-pagination" autoHide="true" maxSize="5" (pageChange)="onPageChanged($event)"></pagination-controls>
+            </mat-card>
+        </div>
+    </div>
+    <div *ngIf="temoignages_.length < 5 ">
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+    </div>
+</div>
+
+</div>
+</div>

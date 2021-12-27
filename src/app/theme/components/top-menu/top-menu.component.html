@@ -1,0 +1,107 @@
+<div class="top-menu">    
+    <div class="hidden-sm hidden-xs welcome-msg" ><span>Wellcome to Markpedia marketplace &nbsp;&nbsp;</span> <span class="email">Email: contact@markpedia.cm &nbsp;&nbsp; </span> <span class="hotline">Hotline: (+237) 654 541 6000 &nbsp;&nbsp;</span>
+    <a mat-button [matMenuTriggerFor]="currencyMenu" #currencyMenuTrigger="matMenuTrigger">
+        {{currency}}<mat-icon class="mat-icon-sm">arrow_drop_down</mat-icon>
+    </a>
+    <mat-menu #currencyMenu="matMenu" [overlapTrigger]="false" xPosition="before" class="app-dropdown">
+        <span (mouseleave)="currencyMenuTrigger.closeMenu()">
+            <button mat-menu-item *ngFor="let cur of currencies" (click)="changeCurrency(cur)">
+                <span>{{cur}}</span>
+            </button>
+        </span>
+    </mat-menu> 
+
+    <a mat-button [matMenuTriggerFor]="langMenu" #langMenuTrigger="matMenuTrigger"> 
+        <img [src]="'assets/images/flags/'+translateService.currentLang+'.svg'" width="18" [alt]="translateService.currentLang">   
+        <span fxShow="false" fxShow.gt-sm class="flag-menu-title">{{getLangText(translateService.currentLang)}}</span>
+        <mat-icon class="mat-icon-sm">arrow_drop_down</mat-icon>
+    </a>
+    <mat-menu #langMenu="matMenu" [overlapTrigger]="false" xPosition="before" class="app-dropdown">
+        <span (mouseleave)="langMenuTrigger.closeMenu()"> 
+            <button *ngFor="let lang of translateService.getLangs()" mat-menu-item (click)="changeLang(lang)">  
+                <img [src]="'assets/images/flags/'+lang+'.svg'" width="18" [alt]="lang" class="mat-elevation-z1"> 
+                <span class="px-1">{{getLangText(lang)}}</span>   
+            </button> 
+        </span>
+    </mat-menu>
+
+    <span fxShow="false" fxShow.gt-sm>
+        <a mat-button routerLink="/compare">{{ 'COMPARE' | translate }} <span *ngIf="settings.rtl">&rlm;</span>({{appService.Data.compareList.length}})</a>
+        <a mat-button routerLink="/wishlist">{{ 'WISHLIST' | translate }} <span *ngIf="settings.rtl">&rlm;</span>({{appService.Data.wishList.length}})</a>
+    </span>  
+
+    
+    <a mat-button  routerLink="auth/login" *ngIf="is_not_authenticate; else elb;" >
+        <mat-icon class="mat-icon-sm account-icon">login</mat-icon> 
+
+        <span fxShow="false" fxShow.gt-sm>login</span> 
+        <!-- <mat-icon class="mat-icon-sm">arrow_drop_down</mat-icon> -->
+    </a>
+    <ng-template #elb>
+        <a mat-button [matMenuTriggerFor]="accountMenu" #accountMenuTrigger="matMenuTrigger">
+            <mat-icon class="mat-icon-sm account-icon">person</mat-icon> 
+            <span fxShow="false" fxShow.gt-sm>{{ 'ACCOUNT' | translate }}</span> 
+            <mat-icon class="mat-icon-sm">arrow_drop_down</mat-icon>
+        </a>  
+        <mat-menu #accountMenu="matMenu" [overlapTrigger]="false" xPosition="before" class="app-dropdown account">
+            <span (mouseleave)="accountMenuTrigger.closeMenu()" *ngIf="userProfile">
+                <div fxLayout="row" fxLayoutAlign="space-around center" class="user-info"> 
+                    <span *ngIf="is_google_authenticated;else noG"><img src="{{google_avatar}}" alt="user-image" width="50"></span>                  
+                     <ng-template #noG><img src="assets/images/others/user.jpg" alt="user-image" width="50"></ng-template>
+                    
+
+                    <p>{{userProfile?.user.first_name}}<br> <small>{{userProfile.user?.last_name}}<span *ngIf="settings.rtl">&rlm;</span></small></p>
+                </div>
+
+                <div class="divider"></div>
+
+                
+                    <a mat-menu-item href="/backoffice" *ngIf="userProfile.user.is_superuser;else user;"> 
+                        <mat-icon class="mat-icon-sm">settings</mat-icon>
+                        <span>Backoffice </span> 
+                    </a>
+                    <ng-template #user> 
+
+                                <a mat-menu-item href="/admin" *ngIf="userProfile.user.is_seller;else customer;"> 
+                                    <mat-icon class="mat-icon-sm">settings</mat-icon>
+                                    <span>My Dashboard </span> 
+                                </a>
+            
+                            
+                            <ng-template #customer>
+                                <a mat-menu-item routerLink="/account" > 
+                                    <mat-icon class="mat-icon-sm">settings</mat-icon>
+                                    <span>Account Settings</span> 
+            
+                                </a>
+                                <a mat-menu-item routerLink="/compare" fxHide="false" fxHide.gt-sm>
+                                    <mat-icon class="mat-icon-sm">compare</mat-icon>
+                                    <span>Compare <span *ngIf="settings.rtl">&rlm;</span>({{appService.Data.compareList.length}})</span> 
+                                </a>
+                                <a mat-menu-item routerLink="/wishlist" fxHide="false" fxHide.gt-sm>
+                                    <mat-icon class="mat-icon-sm">favorite</mat-icon>
+                                    <span>Wishlist <span *ngIf="settings.rtl">&rlm;</span>({{appService.Data.wishList.length}})</span>
+                                </a>
+                                <a mat-menu-item routerLink="/account/orders"> 
+                                    <mat-icon class="mat-icon-sm">add_shopping_cart</mat-icon>
+                                    <span>my orders</span> 
+                                </a>  
+                                <a mat-menu-item routerLink="/account/tracking"> 
+                                    <mat-icon class="mat-icon-sm">location_on</mat-icon>
+                                    <span>Tracking</span> 
+                                </a>  
+                            </ng-template>
+                    </ng-template>
+                   
+                
+                <div class="divider"></div>
+                <a mat-menu-item (click)="logout()"> 
+                    <mat-icon class="mat-icon-sm">power_settings_new</mat-icon>
+                    <span>{{ 'LOGOUT' | translate }}</span> 
+                </a>
+            </span>
+        </mat-menu>       
+    </ng-template>
+      
+</div>
+</div>  

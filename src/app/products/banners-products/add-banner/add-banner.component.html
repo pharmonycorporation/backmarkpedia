@@ -1,0 +1,80 @@
+<h1 mat-dialog-title>Add  product Banner</h1>
+<form [formGroup]="form" (ngSubmit)="onSubmit()" autocomplete="off">
+    <div mat-dialog-content>
+        <div fxLayout="row wrap">
+            
+            
+            <div fxFlex="100">
+                <mat-form-field appearance="outline" class="w-100">
+                    <mat-label>Product </mat-label>
+                    <mat-select formControlName="product_id">
+                        <mat-option *ngFor="let prod of data.products" [value]="prod.id">
+                            <span>{{prod.my_product_flat.name}}</span>
+                        </mat-option>
+                    </mat-select> 
+                </mat-form-field>
+            </div>
+            <div fxFlex="100">
+                <mat-form-field appearance="outline" class="w-100">
+                    <mat-label>Title</mat-label>
+                    <input matInput formControlName="title" required>
+                    <mat-error *ngIf="form.controls.title.errors?.required">Title is required</mat-error> 
+                </mat-form-field>
+               
+            </div> 
+            <div fxFlex="100">
+                <mat-form-field appearance="outline" class="w-100">
+                    <mat-label>Subtitle</mat-label>
+                    <input matInput formControlName="subtitle" required>
+                    <mat-error *ngIf="form.controls.subtitle.errors?.required">Subtitle is required</mat-error> 
+                </mat-form-field>
+               
+            </div> 
+            <div fxFlex="100">
+                <mat-form-field appearance="outline" class="w-100">
+                    <mat-label>Banner size </mat-label>
+                    <mat-select formControlName="banner_type">
+                        <mat-option  value="530x180">
+                            <span>530 x 180</span>
+                        </mat-option>
+                        <mat-option  value="530x250">
+                            <span>530 x 250</span>
+                        </mat-option>
+                        <mat-option  value="530x280">
+                            <span>530 x 280</span>
+                        </mat-option>
+                        <mat-option  value="530x390">
+                            <span>530 x 390</span>
+                        </mat-option>
+                        <mat-option  value="530x530">
+                            <span>530 x 530</span>
+                        </mat-option>
+                        <mat-option  value="810x190">
+                            <span>810 x 190</span>
+                        </mat-option>
+                        <mat-option  value="1650x200">
+                            <span>1650 x 200</span>
+                        </mat-option>
+                        
+                    </mat-select> 
+                </mat-form-field>
+            </div>
+            <div class="file-input">
+                <input type="file" id="file" class="file" formControlName="image" (change)="onFileChange($event)" >
+                <label for="file">
+                  Select your banner
+                  <p class="file-name"></p>
+                </label>
+                <img id="blah" [src]="imageSrc || data?.category?.image || 'http://placehold.it/180'" alt="your image"  />
+            </div> 
+           
+            
+        </div>
+    </div>
+    <div mat-dialog-actions>
+        <div fxLayout="row" fxLayoutAlign="space-between center" class="w-100"> 
+            <button mat-raised-button color="warn" type="button" mat-dialog-close>Close</button>
+            <button mat-raised-button color="primary" type="submit">Save</button>
+        </div> 
+    </div>
+</form>

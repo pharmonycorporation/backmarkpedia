@@ -1,0 +1,53 @@
+<h1 mat-dialog-title>Témoignage</h1>
+<form [formGroup]="form" (ngSubmit)="onSubmit()" autocomplete="off">
+    <div mat-dialog-content>
+        <div fxLayout="row wrap">
+            <div fxFlex="100">
+                <mat-form-field appearance="outline" class="w-100">
+                    <label for="">Email</label> 
+                    <input matInput formControlName="email" required  class="form-control">
+                    <mat-error *ngIf="form.controls.email.errors?.required">Email requis</mat-error> 
+                </mat-form-field>
+               
+            </div> 
+            <div fxFlex="100">
+                <mat-form-field appearance="outline" class="w-100">
+                    <label for="">Nom</label> 
+                    <input matInput formControlName="name" required  class="form-control">
+                    <mat-error *ngIf="form.controls.name.errors?.required">Nom requis</mat-error> 
+                </mat-form-field>
+               
+            </div> 
+            <div fxFlex="100">
+                <mat-form-field appearance="outline" class="w-100">
+                    <label for="">rating</label> 
+                    <input type="number" matInput formControlName="rating" required  class="form-control">
+                    <mat-error *ngIf="form.controls.rating.errors?.required">note requise</mat-error> 
+                </mat-form-field>
+               
+            </div> 
+            
+            <div fxFlex="100">
+                <mat-form-field appearance="outline" class="w-100">
+                    <label>Message</label>
+                    <textarea matInput  formControlName="message" class="form-control" ></textarea>
+                    <mat-error *ngIf="form.controls.message.errors?.required">message requis</mat-error> 
+                </mat-form-field>
+            </div> 
+            <div fxFlex="100">
+                <!-- <label for="">Activer</label> 
+                <iput type="checkbox" formControlName="active" color="primary" /> -->
+                <label for="" class="mr-2">Activer</label> 
+                <input type="checkbox" formControlName="active" color="primary" />
+            </div> 
+
+            
+        </div>
+    </div>
+    <div mat-dialog-actions>
+        <div fxLayout="row" fxLayoutAlign="space-between center" class="w-100"> 
+            <button mat-raised-button color="warn" type="button" mat-dialog-close>Fermer</button>
+            <button mat-raised-button color="primary" type="submit">Enregistrer</button>
+        </div> 
+    </div>
+</form>

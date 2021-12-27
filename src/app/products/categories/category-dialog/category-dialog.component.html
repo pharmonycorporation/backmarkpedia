@@ -1,0 +1,57 @@
+<h1 mat-dialog-title>Category</h1>
+<form [formGroup]="form" (ngSubmit)="onSubmit()" autocomplete="off">
+    <div mat-dialog-content>
+        <div fxLayout="row wrap">
+            <div fxFlex="100">
+                <mat-form-field appearance="outline" class="w-100">
+                    <mat-label>Name</mat-label>
+                    <input matInput formControlName="name" required>
+                    <mat-error *ngIf="form.controls.name.errors?.required">Name is required</mat-error> 
+                </mat-form-field>
+               
+            </div> 
+            <!-- <div fxFlex="100">
+                <mat-form-field appearance="outline" class="w-100">
+                    <mat-label>Image</mat-label>
+                    <button type="button" mat-raised-button (click)="fileInput.click()">Choose File</button>
+                    <input hidden (change)="onFileSelected()" #fileInput type="file" formContlName="image" id="file">
+     
+                </mat-form-field>
+            </div>  -->
+            <div fxFlex="100">
+                <mat-form-field appearance="outline" class="w-100">
+                    <mat-label>Additional</mat-label>
+                    <textarea matInput  formContlName="additional" ></textarea>
+                </mat-form-field>
+            </div> 
+
+            <div fxFlex="100">
+                <mat-form-field appearance="outline" class="w-100">
+                    <mat-label>Parent category</mat-label>
+                    <mat-select formControlName="parent_id">
+                        <mat-option *ngFor="let cat of data.categories" [value]="cat.id">
+                            <span>{{cat.name}}</span>
+                        </mat-option>
+                    </mat-select> 
+                </mat-form-field>
+            </div> 
+            <div fxFlex="100" class="py-1">    
+                <mat-checkbox formControlName="hasSubCategory" color="primary">Has SubCategory</mat-checkbox>
+            </div> 
+            <div class="file-input">
+                <input type="file" id="file" class="file" formControlName="image" (change)="onFileChange($event)" >
+                <label for="file">
+                  Select image file for category 
+                  <p class="file-name"></p>
+                </label>
+                <img id="blah" [src]="imageSrc || data?.category?.image || 'http://placehold.it/180'" alt="your image"  width="400" height="400"/>
+            </div>
+        </div>
+    </div>
+    <div mat-dialog-actions>
+        <div fxLayout="row" fxLayoutAlign="space-between center" class="w-100"> 
+            <button mat-raised-button color="warn" type="button" mat-dialog-close>Close</button>
+            <button mat-raised-button color="primary" type="submit">Save</button>
+        </div> 
+    </div>
+</form>
