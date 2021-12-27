@@ -597,10 +597,6 @@ import { PieChart1Component } from './elements/widget/charts/pie-chart1/pie-char
 import { BarChart1Component } from './elements/widget/charts/bar-chart1/bar-chart1.component';
 import { BarChart2Component } from './elements/widget/charts/bar-chart2/bar-chart2.component';
 import { AreaChart1Component } from './elements/widget/charts/area-chart1/area-chart1.component';
-// import { VisitorActivityComponent } from './elements/widget/visitor-activity/visitor-activity.component';
-// import { VisitorActivityDayComponent } from './elements/widget/visitor-activity/visitor-activity-day/visitor-activity-day.component';
-// import { VisitorActivityMonthComponent } from './elements/widget/visitor-activity/visitor-activity-month/visitor-activity-month.component';
-// import { VisitorActivityYearComponent } from './elements/widget/visitor-activity/visitor-activity-year/visitor-activity-year.component';
 import { ChartjsActiveUsersComponent } from './elements/widget/charts/chartjs-active-users/chartjs-active-users.component';
 import { BloodPressureComponent } from './elements/widget/charts/blood-pressure/blood-pressure.component';
 import { HeartRateComponent } from './elements/widget/charts/heart-rate/heart-rate.component';
@@ -1236,10 +1232,6 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
    BarChart1Component,
    BarChart2Component,
    AreaChart1Component,
-//    VisitorActivityComponent,
-//    VisitorActivityDayComponent,
-//    VisitorActivityMonthComponent,
-//    VisitorActivityYearComponent,
    ChartjsActiveUsersComponent,
    BloodPressureComponent,
    HeartRateComponent,

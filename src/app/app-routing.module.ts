@@ -272,7 +272,7 @@ const routes: Routes = [
                         {path: 'uc-nestable', component: NestableComponent},
                         {path: 'uc-lightgallery', component: LightGalleryComponent},
                         
-                        {path: 'widget-basic', component: WidgetComponent},
+                        
                         
                         {path: 'form-element', component: ElementsComponent},
                         {path: 'form-validate', component: FormValidateComponent},
