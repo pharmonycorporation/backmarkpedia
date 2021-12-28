@@ -54,7 +54,7 @@ export class NavigationComponent implements OnInit {
       '/admin/products/categories',
       '/admin/products/product-list',
       '/admin/ecom-product-list',
-      '/admin/products/daily-deals',
+      '/admin/ecom-product-grid',
       '/admin/products/banner-product',
 
     ];
