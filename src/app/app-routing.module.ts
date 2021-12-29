@@ -151,6 +151,8 @@ const routes: Routes = [
                       { path: 'products', loadChildren: () => import('./products/products.module').then(m => m.ProductsModule), data: { breadcrumb: 'product details' } },
                       { path: 'sales', loadChildren: () => import('./sales/sales.module').then(m => m.SalesModule), data: { breadcrumb: 'sales' } },
                       { path: 'customers', loadChildren: () => import('./customers/customers.module').then(m => m.CustomersModule), data: { breadcrumb: 'customers' } },
+                      { path: 'reviews', loadChildren: () => import('./reviews/reviews.module').then(m => m.ReviewsModule), data: { breadcrumb: 'reviews' } },
+                      { path: 'support', loadChildren: () => import('./support/support.module').then(m => m.SupportModule), data: { breadcrumb: 'reviews' } },
                         {path: '', component: Index1Component},
                         {path: 'index', component: Index1Component},
                         {path: 'add-supplier', component: AddSupplierComponent},

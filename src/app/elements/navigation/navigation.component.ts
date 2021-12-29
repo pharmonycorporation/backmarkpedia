@@ -42,6 +42,12 @@ export class NavigationComponent implements OnInit {
       '/admin/ecom-customers',
       '/admin/add-customer',
     ];
+    reviewsArray = [
+      '/admin/reviews',
+    ];
+    supportArray = [
+      '/admin/support',
+    ];
 
     OrdersArray = [
       '/admin/orders',

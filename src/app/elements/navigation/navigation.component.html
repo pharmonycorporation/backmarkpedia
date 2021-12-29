@@ -80,24 +80,23 @@
             </ul>
             
             </li>
-            <li [ngClass]="{'mm-active': supplierArray.indexOf(currentHref) > -1}"><a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
+            <li [ngClass]="{'mm-active': reviewsArray.indexOf(currentHref) > -1}"><a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
                 <i class="flaticon-381-success"></i>
                 <span class="nav-text">Reviews</span>
                 </a>
-            <ul aria-expanded="false"  [ngClass]="{'mm-show': supplierArray.indexOf(currentHref) > -1}">
-                <li><a  class="{{(currentHref == '/admin/suppliers' ) ? 'mm-active' : ''}}" [routerLink]="['/admin/suppliers']">List of suppliers </a></li>
-                <li><a [routerLink]="['/admin/add-supplier']" class="{{(currentHref == '/admin/add-supplier') ? 'mm-active' : ''}}">Add supplier </a></li>
-            
+            <ul aria-expanded="false"  [ngClass]="{'mm-show': reviewsArray.indexOf(currentHref) > -1}">
+                <li><a  class="{{(currentHref == '/admin/reviews' ) ? 'mm-active' : ''}}" [routerLink]="['/admin/reviews']">Reviews </a></li>
+                
             </ul>
             
             </li>
-            <li [ngClass]="{'mm-active': supplierArray.indexOf(currentHref) > -1}"><a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
+            <li [ngClass]="{'mm-active': supportArray.indexOf(currentHref) > -1}"><a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
                 <i class="flaticon-381-settings"></i>
                 <span class="nav-text">Support</span>
                 </a>
-            <ul aria-expanded="false"  [ngClass]="{'mm-show': dashboardArray.indexOf(currentHref) > -1}">
-                <li><a  class="{{(currentHref == '/admin/suppliers' ) ? 'mm-active' : ''}}" [routerLink]="['/admin/suppliers']">List of suppliers </a></li>
-                <li><a [routerLink]="['/admin/add-supplier']" class="{{(currentHref == '/admin/add-supplier') ? 'mm-active' : ''}}">Add supplier </a></li>
+            <ul aria-expanded="false"  [ngClass]="{'mm-show': supportArray.indexOf(currentHref) > -1}">
+                <li><a  class="{{(currentHref == '/admin/support' ) ? 'mm-active' : ''}}" [routerLink]="['/admin/support']">Support </a></li>
+                <!-- <li><a [routerLink]="['/admin/add-supplier']" class="{{(currentHref == '/admin/add-supplier') ? 'mm-active' : ''}}">Add supplier </a></li> -->
             
             </ul>
             
