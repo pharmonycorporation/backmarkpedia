@@ -15,7 +15,7 @@
           "options": {
             "allowedCommonJsDependencies": [
                 "lodash",
-                "ngx-lightbox",
+                "ngx-lightbox"
             ],
             "outputPath": "docs",
             "index": "src/index.html",
